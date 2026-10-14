@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Livret avant après</title>
+<style>
+:root{color-scheme:dark;--bg:#0f0c16;--fg:#efe6f0;--mute:#a597ab;--card:#1a1522;--amb:#f0a35e;--rose:#e0587a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:32px 16px 60px}
+a{color:var(--amb)}
+h1{margin:0 0 4px;font-size:2rem}
+h2{margin:40px 0 4px;font-size:1.15rem}
+p{color:var(--mute);margin:0 0 14px;max-width:70ch}
+.cmp{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--card);--x:50%;touch-action:pan-y}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cmp .apres{clip-path:inset(0 0 0 var(--x))}
+.cmp .ligne{position:absolute;top:0;bottom:0;left:var(--x);width:3px;margin-left:-1px;background:var(--amb);pointer-events:none}
+.cmp .ligne::after{content:"";position:absolute;top:50%;left:50%;width:30px;height:30px;margin:-15px;border-radius:50%;background:var(--amb);box-shadow:0 0 0 4px #0f0c16aa}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.lab{display:flex;justify-content:space-between;color:var(--mute);font-size:.85rem;margin-top:6px}
+.lab b{color:var(--fg);font-weight:600}
+</style>
+</head>
+<body><main>
+<p><a href="../">← Docs de Duel the Myst</a></p>
+<h1>Livret des images</h1>
+<p>Le premier build 2D (13/10, 11 h 44, encore nommé DueGaea) contre le build du 14/10 au matin. Fais glisser le curseur : à gauche avant, à droite après. Tous les visuels sont encore des placeholders tirés de Duelyst.</p>
+<div id="l"></div>
+</main>
+<script>
+const P=[
+["Écran titre","s_titre","l3_titre","Nouveau nom, menu complet : tutoriel, options, collection."],
+["Choix du Général","s_classe","r4_classe","Quatre classes en texte deviennent six classes en cartes de Général, trois Généraux chacune, sept decks de départ et une palette perso."],
+["Combat","s_combat","r5_combat","Plateau Duelyst plein écran, artefacts portés, log de combat, effets visuels d'origine."],
+["Carte de la run","s_map","r4_carte2","Un acte de 12 étages devient trois actes façon Slay the Spire 2, avec cotes et aperçu des salles."],
+["Récompense","s_recompense","r4_recompense","Le butin passe au format Slay the Spire : or, recrue, relique, greffe, carte."]];
+document.getElementById("l").innerHTML=P.map(([t,a,b,d])=>`<h2>${t}</h2><p>${d}</p>
+<div class="cmp"><img src="img/${a}.jpg" alt="${t}, premier build" loading="lazy"><img class="apres" src="img/${b}.jpg" alt="${t}, build du 14/10" loading="lazy"><div class="ligne"></div>
+<input type="range" min="0" max="100" value="50" aria-label="Curseur avant / après : ${t}"></div>
+<div class="lab"><span><b>Avant</b> · 13/10</span><span><b>Après</b> · 14/10</span></div>`).join("");
+document.querySelectorAll(".cmp input").forEach(i=>i.oninput=()=>i.parentNode.style.setProperty("--x",i.value+"%"));
+</script>
+</body>
+</html>
