@@ -26,20 +26,20 @@ p{color:var(--mute);margin:0 0 14px;max-width:70ch}
 <body><main>
 <p><a href="../">← Docs de Duel the Myst</a></p>
 <h1>Livret des images</h1>
-<p>Le premier build 2D (13/10, 11 h 44, encore nommé DueGaea) contre le build du 14/10 au matin. Fais glisser le curseur : à gauche avant, à droite après. Tous les visuels sont encore des placeholders tirés de Duelyst.</p>
+<p>Le premier build 2D (13/10, 11 h 44, encore nommé DueGaea) contre le build du 15/10 au matin (retour de jeu n°11). Fais glisser le curseur : à gauche avant, à droite après. Tous les visuels sont encore des placeholders tirés de Duelyst.</p>
 <div id="l"></div>
 </main>
 <script>
 const P=[
-["Écran titre","s_titre","l3_titre","Nouveau nom, menu complet : tutoriel, options, collection."],
-["Choix du Général","s_classe","r4_classe","Quatre classes en texte deviennent six classes en cartes de Général, trois Généraux chacune, sept decks de départ et une palette perso."],
-["Combat","s_combat","r5_combat","Plateau Duelyst plein écran, artefacts portés, log de combat, effets visuels d'origine."],
-["Carte de la run","s_map","r4_carte2","Un acte de 12 étages devient trois actes façon Slay the Spire 2, avec cotes et aperçu des salles."],
-["Récompense","s_recompense","r4_recompense","Le butin passe au format Slay the Spire : or, recrue, relique, greffe, carte."]];
+["Écran titre","s_titre","r9_menu","Nouveau nom, menu façon Duelyst à deux portes (débutant ou joueur de Duelyst), fond peint et animé."],
+["Choix du Général","s_classe","r8_classe","Quatre classes en texte deviennent six classes en cartes de Général, trois Généraux chacune, des decks d'archétype et une palette perso."],
+["Combat","s_combat","r8_final_combat","Plateaux et terrains variables, cadre de carte Duelyst, artefacts portés, cimetière et paquet en panneau latéral."],
+["Carte de la run","s_map","r11_map","Un acte de 12 étages devient trois actes façon Slay the Spire 2 : carte scrollable, aperçu détaillé des salles, Monde-objet à chaque acte."],
+["Récompense","s_recompense","r8_recompense","Le butin passe au format Slay the Spire : or, recrue, relique, greffe, carte."]];
 document.getElementById("l").innerHTML=P.map(([t,a,b,d])=>`<h2>${t}</h2><p>${d}</p>
-<div class="cmp"><img src="img/${a}.jpg" alt="${t}, premier build" loading="lazy"><img class="apres" src="img/${b}.jpg" alt="${t}, build du 14/10" loading="lazy"><div class="ligne"></div>
+<div class="cmp"><img src="img/${a}.jpg" alt="${t}, premier build" loading="lazy"><img class="apres" src="img/${b}.jpg" alt="${t}, build du 15/10" loading="lazy"><div class="ligne"></div>
 <input type="range" min="0" max="100" value="50" aria-label="Curseur avant / après : ${t}"></div>
-<div class="lab"><span><b>Avant</b> · 13/10</span><span><b>Après</b> · 14/10</span></div>`).join("");
+<div class="lab"><span><b>Avant</b> · 13/10</span><span><b>Après</b> · 15/10</span></div>`).join("");
 document.querySelectorAll(".cmp input").forEach(i=>i.oninput=()=>i.parentNode.style.setProperty("--x",i.value+"%"));
 </script>
 </body>
